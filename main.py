@@ -130,7 +130,7 @@ root = Tk()
 root.title("Face Swapping App")
 this_dir = os.path.dirname(os.path.realpath(__file__))
 # Adds a custom logo
-imgicon = PhotoImage(file=os.path.join(this_dir,'imgs/icon.png'))
+imgicon = PhotoImage(file=os.path.join(this_dir,'imgs/icon.gif'))
 root.tk.call('wm', 'iconphoto', root._w, imgicon)
 
 # Create the panel where webcam image will be shown
