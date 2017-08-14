@@ -4,11 +4,9 @@ App for Faceswapping using OpenCV, dlib and Tkinter
 based on [this respository](https://github.com/spmallick/learnopencv/tree/master/FaceSwap) for the core of the technique. More about how it works in this [article](http://www.learnopencv.com/face-swap-using-opencv-c-python/).
 
 
-##### From Webcam Feed
 ![alt text][s1]
 
 
-##### From specific images
 ![alt text][s2]
 
 
@@ -41,30 +39,28 @@ Finally just `pip install it` with: `pip install dlib`
 
 ## Usage
 
-Before you can call the api for visual recognition, the path to the credentials json file must be specified in the environment variable `GOOGLE_APPLICATION_CREDENTIALS`. Just execute for example:
-```
-export GOOGLE_APPLICATION_CREDENTIALS="/path/to/keyfile.json"
-```
+### Desktop application
 
-
-### Feed from Webcam
-
-This script gets feed from the first Webcam that identifies and analyses it, if faces are found it displays where the faces are and their corresponding emotion (if any). Just execute
+The app has a button to chose an image from the computer, then it shows the chosen image and tries to find faces within the image. If found, it draws green rectangles around them. Then you can click any face and it put that face in the first face found in the Webcam feed. If you want to undo this just click on the image outside any face detected.
 
 ```
 python main.py
 ```
 
-### Specific image
+### Real time from WebCam
 
-The same can be done to a specific image given a path. It would show the result and after the window is closed, in the `output` folder would be saved the annotated image with the detected faces and their emotions. Type:
+![alt text][s3]
+
+If you just want to do a faceswap between two faces (if found) from the feed of the webcam of your pc, just execute another script.
 
 ```
-python main_image.py -f imgs/people.jpg
+python main_webcam.py
 ```
 
 
- ***Note:*** You have 1000 image analyses free per month plus your 300 USD from the free trial.
 
-[s1]: https://raw.githubusercontent.com/charlielito/vision-sentiment-analysis-googleapi/master/output/output_Happy.jpg "S"
-[s2]: https://raw.githubusercontent.com/charlielito/vision-sentiment-analysis-googleapi/master/output/output_Surprised.jpg "S"
+
+
+[s1]: https://raw.githubusercontent.com/charlielito/mydata/master/faceswap.gif "S"
+[s2]:  https://raw.githubusercontent.com/charlielito/face-swap-opencv-dlib/master/imgs/action/faceswappitts.gif "S"
+[s3]:  https://raw.githubusercontent.com/charlielito/face-swap-opencv-dlib/master/imgs/action/faceswapreal.gif "S"
