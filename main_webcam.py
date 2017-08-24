@@ -8,7 +8,7 @@ import datetime
 import imutils
 import time
 import dlib
-from utils import applyAffineTransform, rectContains, calculateDelaunayTriangles, warpTriangle, face_swap3, face_swap
+from utils import face_swap3, face_swap
 
 if __name__ == '__main__' :
 
@@ -16,7 +16,7 @@ if __name__ == '__main__' :
     (major_ver, minor_ver, subminor_ver) = (cv2.__version__).split('.')
 
     if int(major_ver) < 3 :
-        print >>sys.stderr, 'ERROR: Script needs OpenCV 3.0 or higher'
+        print >> sys.stderr, 'ERROR: Script needs OpenCV 3.0 or higher'
         sys.exit(1)
 
     print("[INFO] loading facial landmark predictor...")

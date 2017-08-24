@@ -123,15 +123,26 @@ def face_swap3(img_ref, detector, predictor):
     if (len(rects1) < 2): #at least 2 faces in image need to be found
         return None
 
+    if is_out_of_image(rects1, gray1.shape[1], gray1.shape[0]):
+        return None
+
     img1Warped = np.copy(img_ref);
 
     shape1 = predictor(gray1, rects1[0])
     points1 = face_utils.shape_to_np(shape1) #type is a array of arrays (list of lists)
+
+    if is_out_of_image_points(points1, gray1.shape[1], gray1.shape[0]): #check if points are inside the image
+        return None
+
     #need to convert to a list of tuples
     points1 = list(map(tuple, points1))
 
     shape2 = predictor(gray1, rects1[1])
     points2 = face_utils.shape_to_np(shape2)
+
+    if is_out_of_image_points(points2, gray1.shape[1], gray1.shape[0]): #check if points are inside the image
+        return None
+
     points2 = list(map(tuple, points2))
 
     # Find convex hull
@@ -313,7 +324,7 @@ def face_swap2(img_ref, img_mount_face, detector, predictor):
     rects1 = detector(gray1, 0)
     print len(rects2)
     if (len(rects2) == 0 or len(rects1) == 0): #if not found faces in images return error
-        return None
+        return None, None
 
     img1Warped = np.copy(img_mount_face);
     img2Warped = np.copy(img_ref);
@@ -344,7 +355,7 @@ def face_swap2(img_ref, img_mount_face, detector, predictor):
     dt = calculateDelaunayTriangles(rect, hull2)
 
     if len(dt) == 0:
-        return None
+        return None, None
 
     # Apply affine transformation to Delaunay triangles
     for i in xrange(0, len(dt)):
@@ -382,7 +393,7 @@ def face_swap2(img_ref, img_mount_face, detector, predictor):
     dt = calculateDelaunayTriangles(rect, hull1)
 
     if len(dt) == 0:
-        return None
+        return None, None
 
     # Apply affine transformation to Delaunay triangles
     for i in xrange(0, len(dt)):
