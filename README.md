@@ -1,7 +1,7 @@
 # Faceswapping using OpenCV and Dlib
 
 App for Faceswapping using OpenCV, dlib and Tkinter
-based on [this respository](https://github.com/spmallick/learnopencv/tree/master/FaceSwap) for the core of the technique. More about how it works in this [article](http://www.learnopencv.com/face-swap-using-opencv-c-python/).
+based on [this respository](https://github.com/spmallick/learnopencv/tree/master/FaceSwap) for the core of the technique. More about on how it works in this [article](http://www.learnopencv.com/face-swap-using-opencv-c-python/).
 
 
 ![alt text][s1]
@@ -58,7 +58,29 @@ python main_webcam.py
 ```
 
 
+### Between images or snap from WebCam
 
+The other script can swap faces between images and save them modified. To change faces between to files execute:
+
+```
+python main_image.py -f <path_to_image> -f2 <path_to_image2> --webcam
+```
+
+To swap only 2 faces within ONE image just type:
+
+```
+python main_image.py -f <path_to_image>
+```
+
+If you want to swap your face with one in a given image type:
+
+```
+python main_image.py -f <path_to_image> --webcam
+```
+
+The images will be saved into the folder `imgs` with added to the end the word `swapped`.
+
+**Note**: If no -f [file] is given, it will bi take the `imgs/pitts.jpg` as default image.
 
 
 [s1]: https://raw.githubusercontent.com/charlielito/mydata/master/faceswap.gif "S"
